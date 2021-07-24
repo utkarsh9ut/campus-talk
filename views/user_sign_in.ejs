@@ -1,0 +1,33 @@
+
+<link rel="stylesheet" href="/css/sign-up.css">
+<div class="container">
+    <div>
+        <h2>SIGN-IN</h2>
+    </div>
+<form action="/users/create-session" method="POST">
+    
+<div class="in">
+    <label>EMAIL</label><br>
+    <i class="bi bi-envelope-fill"></i>
+    <input type="email" name="email" placeholder="Your Email" required>
+</div>
+   <div class="in">
+    <label>PASSWORD</label><br>
+    <i class="bi bi-lock-fill"></i>
+    <input  type="password" name="password" placeholder="Password" required>
+   </div> 
+  
+    
+    <button value="SIGN-IN" class="submit" style="color: blue; border:blue 1px solid; font-family: sans-serif;font-weight: 800; margin-bottom: 10px;">SIGN-IN</button>
+    
+</form>
+<div class="google">
+    Or Sign-In using Google<br><br>
+<p>
+        
+    <a href="/users/auth/google">
+    <img src="/images/google.png" alt="google" width="50">
+</a>
+</p>
+</div>
+</div>

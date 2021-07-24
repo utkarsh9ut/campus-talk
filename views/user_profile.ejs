@@ -1,0 +1,101 @@
+        <link rel="stylesheet" href="/css/user_profile.css">
+        <%if(user.id==profile_user.id){%>
+        <div class="user-profile">    
+            <h2>
+                EDIT YOUR PROFILE
+             </h2>
+             <br>
+            <img src="<%=user.avatar %>" alt="<%= user.name %>" width="100">
+     <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+        <label class="in">NAME</label><br>
+        <input type="text" name="name" placeholder="your name" value="<%=profile_user.name %>" required>
+        <br> 
+        <label class="in">EMAIL</label><br> 
+        
+        <input type="email" name="email" placeholder="your email" value="<%=profile_user.email %>" required>
+        <br> 
+        <label class="in">PROFILE IMAGE</label><br> 
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <br> 
+        <label class="in">PROFILE INFORMATION</label><br> 
+        <textarea class="in" name="ProfileInfo" placeholder="Your ProfileInfo" value="<%=profile_user.ProfileInfo %>" ></textarea>
+        <br> 
+        <br>
+        <input type="submit" value="update" class="submit">
+    </form>
+</div>
+    
+
+            <% }else{%>
+                
+                <div class="absent-user">
+                    <h2>Profile Information</h2>
+                    <img src="<%=profile_user.avatar %>" alt="<%= profile_user.name %>" width="100" class="other">
+                    <span class="add-button">
+<!-- If friendship exists -->
+<% if(friendship){ %>
+    <% if(friendship.accepted){ %>
+        <a href="/friendship/remove-friend/<%= friendship.id %>"><button type="button">Remove Friend</button></a>
+    <% }else{ %>
+        <!-- Toggle friendship button for the request sender -->
+        <% if(friendship.from_user == user.id){ %>
+            <a class="toggle-friend-button" href="/friendship/toggle/<%= profile_user._id %>">
+                <button type="submit">Cancel Request</button>
+            </a>
+        <% }else{ %>
+            <!-- Accept or delete friend for the receiver -->
+            <a href="/friendship/accept-request/<%= friendship.id %>"><button type="button">Accept Request</button></a>
+            <a href="/friendship/delete-request/<%= friendship.id %>"><button type="button">Delete Request</button></a>
+        <% } %>
+
+    <% } %>
+<% }else{ %>
+    <!-- Toggle friendship button -->
+    <a class="toggle-friend-button" href="/friendship/toggle/<%= profile_user._id %>">
+        <button type="submit">Add Friend</button>
+    </a>
+<% } %> 
+           
+
+                    </span>
+                   
+              
+                    <table style="width:50%" >
+                        
+                       <tr>
+                           <!-- <td>
+                           PROFILE PHOTO
+                       </td>
+                           <td class="img">
+                            <%if(profile_user.avatar){%>
+                                <span>
+                                   
+                                </span>
+                            <%} else{%>
+                                Not uploaded...
+                                <%} %>
+                    </td> -->
+                       </tr>
+                        <tr>
+                          <td>NAME:</td>
+                          <td> <%= profile_user.name %></td>
+                        </tr>
+                        <tr>
+                          <td>EMAIL:</td>
+                          <td><%= profile_user.email %></td>
+                        </tr>
+                        <tr>
+                            <td>PROFILE STATUS:</td>
+                            <td><%= profile_user.ProfileInfo %></td>
+                          </tr>
+                      </table>
+                    
+                     
+                
+            </div>
+  
+
+
+        
+       <% } %>
+       <script src="/js/toggle_friendship.js"></script>

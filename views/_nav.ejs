@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/css/_nav.css">
+<body id="body-pd">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class>
+            <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <a class="navbar-brand" href="/" style="color: blue; font-weight: 1000; margin-left: 50px;">HOME</a>
+            <ul class="navbar-nav ms-auto">
+                <% if (locals.user){ %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" style="color: blue; font-size: 20px;font-weight: 1000; margin-left: 50px;" href="/users/profile/<%=locals.user.id %>">
+                            <%= user.name %>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/users/sign-out" style="color: blue; font-size: 20px; font-weight: 1000; margin-left: 50px;">Sign Out</a>
+                    </li>
+                <% }else{ %>
+        
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/users/sign-in" style="color: blue; font-size: 20px;  font-weight: 1000; margin-left: 50px;">Sign In</a>
+                    </li>
+        
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/users/sign-up" style="color:  blue; font-size: 20px; font-weight: 1000; margin-left: 50px;">Sign Up</a>
+                    </li>
+        
+        
+                <% } %>
+              </ul>
+        </header>
+          
+          
+          
+         
+           
+             
+            
+          </div>
+        </div>
+      </nav>
+    <!-- <header class="header" id="header">
+        
+       
+    </header> -->
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+            <% if(locals.user){%>
+             <a href="#" class="nav_logo"> <img  src="<%=user.avatar%>" width="30px" class="special"> <span class="nav_logo-name"><%=user.name%></span> </a>
+                <%}else{ %>
+                     <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name" >HOME</span> </a>
+                    <%}%>
+             <div class="nav_list"> <a href="/" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
+                
+                    
+                 <% if(locals.user){%>
+                 <a href="/users/profile/<%=locals.user.id %>" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name"> PROFILE</span> </a>
+                 <%}else{%> 
+                    <a href="/users/sign-in %>" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name"> PROFILE</span> </a>
+
+                     <%}%> 
+
+                  <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>
+                   <a href="#" class="nav_link"> <i class="bi bi-question-circle"></i></i> <span class="nav_name">Help</span> </a>
+                    
+                 </div>
+                </div>
+                <div>
+                 <% if(locals.user){%>
+             <a href="/users/sign-out" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        <%}%>
+                 </div>
+        </nav>
+    </div>
+    <!--Container Main start-->
+   
+    <!--Container Main end-->
+    <script src="/js/_nav.js"></script>
+        

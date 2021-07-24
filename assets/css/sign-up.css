@@ -1,0 +1,62 @@
+@import "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css";
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-style: italic;
+  color: white;
+  text-shadow: 3px 2px 5px white; }
+
+input {
+  border-bottom: 6px solid whitesmoke;
+  color: #130031;
+  height: 30px;
+  font-family: sans-serif;
+  width: 75%;
+  font-size: 20px;
+  margin-left: auto;
+  margin-top: 5px;
+  padding: 3px 3px 0px 2px;
+  resize: vertical;
+  position: relative; }
+
+div .in {
+  margin-left: 120px;
+  margin-top: 10px; }
+
+.container {
+  background-color: #0307e6;
+  opacity: 0.75;
+  box-shadow: 5px 5px 35px skyblue;
+  border-radius: 20px;
+  color: #fff;
+  height: auto;
+  width: 35%;
+  margin-top: 30px;
+  min-height: 50%; }
+
+form {
+  border-bottom: 2px white solid; }
+
+div h2 {
+  text-align: center;
+  color: white;
+  border-bottom: 5px white solid;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+  margin: 0px; }
+
+.submit {
+  width: 30%;
+  margin-top: 30px;
+  margin-left: 200px;
+  padding: 2px;
+  background-color: #ebebff;
+  box-shadow: 0 6px 20px 0 rgba(250, 248, 248, 0.5); }
+
+.google {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif; }

@@ -1,0 +1,46 @@
+.user-img {
+  border-radius: 50px;
+  width: 45; }
+
+.delete-post {
+  margin-right: 50px;
+  float: right;
+  font-size: 20px;
+  color: red; }
+
+.time {
+  font-size: 12px; }
+
+.like {
+  font-size: 20px; }
+
+.user-info {
+  vertical-align: middle;
+  margin-left: 4px; }
+
+.user-name {
+  font-size: 20px; }
+
+.post-content {
+  font-size: 30px; }
+
+span {
+  display: inline-block; }
+
+.each-post {
+  margin-top: 5px;
+  padding: 0.5px 0.5px 0.5px 0.5px;
+  padding-left: 5px;
+  box-shadow: 2px 2px 15px skyblue;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #dbe0e6; }
+
+.img-post {
+  margin-left: 10px; }
+
+ul.comments {
+  list-style: circle; }
+
+.name {
+  color: blue; }

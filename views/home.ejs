@@ -1,0 +1,225 @@
+
+<link rel="stylesheet" href="/css/home.css">
+<% if(locals.user){ %>
+<div id="home-container">
+    <span class="post"> 
+    <section id="feed-posts">
+            <h4>Posts</h4>
+           
+            <form action="/posts/create" id="new-post-form" method="POST" enctype="multipart/form-data" >
+                <textarea name="content" cols="30" rows="3" placeholder="Write your post here..." required></textarea>
+               
+                <input class="post-submit" type="file" name="avatar" placeholder="Post file" style="color: rgb(0, 68, 255); background-color: white; font-size: 15px; font-family:cursive; border: blue solid 3px; ">
+            &nbsp;  &nbsp;  &nbsp;
+                <input class="post-submit" type="submit" value="Post" style="color: rgb(31, 94, 231); background-color: white; font-size: 20px; font-family:cursive; border: blue solid 3px; ">
+            </form>
+            
+        
+            <div id="posts-list-container">
+                <ul>
+                    <% for(post of posts){ %>
+                        
+                    <%- include('_post') -%>
+                        
+                    <%} %>
+                </ul>
+            </div>
+        </section>
+    </span>
+
+
+        
+         <!-- <section id="users-container"> -->
+        <!-- If user is signed in then show his/her friends -->
+       <span class="Friends">
+        <div id="users-friends">
+            <% if(locals.user){ %>
+            <h4 style="text-align: center; border-bottom: solid white 3px;">Friends</h4>
+
+            <% for(friend of logged_in_user.friendships){%>
+                <!-- If request is accepted -->
+                <% if(friend.accepted){ %>
+                    <!-- if User himself had sent the request -->
+                    <% if(locals.user.id == friend.from_user.id){ %>
+                        <!-- then friend details are in to_user object -->
+                        <p id="friend-<%= friend.to_user.id %>" class="friends-of-user">
+                            <a href="/users/profile/<%= friend.to_user.id %>"><%= friend.to_user.name %></a>
+                            <a class="remove-friend-button" href="/friendship/toggle/<%= friend.to_user.id %>">
+                                <button type="button">
+                                    Remove friend
+                                </button>
+                            </a>
+                        </p>
+                    <% }else{ %>
+                        <!-- then friend details are in from_user object -->
+                        <p id="friend-<%= friend.from_user.id %>" class="friends-of-user">
+                            <a href="/users/profile/<%= friend.from_user.id %>"><%= friend.from_user.name %></a>
+                            <a class="remove-friend-button" href="/friendship/toggle/<%= friend.from_user.id %>">
+                                <button type="button">
+                                    Delete friend
+                                </button>
+                            </a>
+                        </p>
+                    <% } %>
+
+                <% } %>
+                
+
+                
+            <% } %>
+        </div>
+       
+            <div id="users">
+                <h4 style="text-align: center; border-bottom: solid white 3px;">Users</h4>
+                <% for(u of all_users){%>
+                    <p>
+                        <img src="<%=u.avatar %>" alt="<%= u.name %>" width="30">
+                        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                    </p>
+                <% } %>
+            </div>
+        
+       </span>
+<span class="sent">
+        <div id="users-sent-requests">
+            <h4 class="divide">Sent Requests</h4>
+           
+            <% for(friend of logged_in_user.friendships){%>
+                <% if(!friend.accepted && locals.user.id == friend.from_user.id){ %>
+                    <!-- then friend details are in to_user object -->
+                    <p id="friend-<%= friend.to_user.id %>" class="friends-of-user">
+                        <img src="<%=friend.to_user.avatar %>" alt="<%=friend.to_user.name %>" width="30">
+                        <a href="/users/profile/<%= friend.to_user.id %>"><%= friend.to_user.name %></a>
+                        <a class="remove-friend-button" href="/friendship/toggle/<%= friend.to_user.id %>">
+                            <button type="button" class="sent-rec">
+                                Cancel Request
+                            </button>
+                        </a>
+                    </p>
+                <% } %>
+            <% } %>
+        </div>
+        
+    <!-- </span>
+     <span class="recieve"> -->
+        <div id="users-received-requests">
+            <h4 class="divide">Received Requests</h4>
+            
+            <% for(friend of logged_in_user.friendships){%>
+                <% if(!friend.accepted && locals.user.id == friend.to_user.id){ %>
+                    <!-- then friend details are in from_user object -->
+                    <p id="friend-<%= friend.from_user.id %>" class="friends-of-user">
+                        <a href="/users/profile/<%= friend.from_user.id %>"><%= friend.from_user.name %></a>
+                        <a class="remove-friend-button" href="/friendship/toggle/<%= friend.from_user.id %>">
+                           <button type="button">
+                                Delete Request
+                            </button>
+                        </a>
+                    </p>
+                <% } %>
+            <% } %>
+        </div>
+        <% } %>
+     </span> 
+
+    
+    
+
+   
+</div>
+
+<% } else{ %>
+    <section class="wrapper">
+        <div class="container">
+        
+        <div class="row">
+           
+       <div class="col-sm-5">
+        <a  href="/users/sign-in"  class="text-white"><div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
+               <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+              <div class="card-img-overlay d-flex flex-column">
+               <div class="card-body">
+                  <!-- <small class="card-meta mb-2">Sign-In</small> -->
+                  <h2 class="card-title mt-0 "><a class="text-white" href="/users/sign-in">If already registered !<br> SIGN-IN here</a></h2>
+                 <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
+                </div>
+                <div class="card-footer">
+                 <div class="media">
+        <!-- <img class="mr-3 rounded-circle" src="https://cdn0.iconfinder.com/data/icons/user-pictures/100/male-512.png" alt="Generic placeholder image" style="max-width:50px"> -->
+        <div class="media-body">
+            <a class="btn btn-primary btn-lg"  role="button" href="/users/sign-in" class="card-link" style="width: 100%; font-size: 30px; text-decoration: solid;" >Sign-In</a>
+          <!-- <h6 class="my-0 text-white d-block">Oz COruhlu</h6>
+           <small>Director of UI/UX</small> -->
+        </div>
+      </div>
+                </div>
+              </div>
+            </div></a></div>
+           
+        <div class="col-sm-5"><div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?computer,design');">
+               <img class="card-img d-none" src="https://source.unsplash.com/600x900/?computer,design" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+              <div class="card-img-overlay d-flex flex-column">
+               <div class="card-body">
+                  
+                  <h2 class="card-title mt-0 "><a class="text-white" href="/users/sign-up">NEW HERE ! <BR>REGISTER QUICKLY</a></h2>
+                 
+                </div>
+                <div class="card-footer">
+                 <div class="media">
+       
+        <div class="media-body">
+            <a class="btn btn-primary btn-lg"  role="button" href="/users/sign-up" class="card-link" style="width: 100%; font-size: 30px; text-decoration: solid;" >Sign-Up</a>
+           
+        </div>
+      </div>
+                </div>
+              </div>
+            </div></div>
+        
+      </div>
+        
+      </div>
+      </section>
+      
+    
+    <!-- <div class="row">
+        <div class="col-sm-4 position-absolute top-50 start-50">
+          <div class="card bg-info border-success">
+            <div class="card-body">
+              <h5 class="card-title">ALREADY REGISTERED</h5>
+              <p class="card-text">If already registered then Sign-In quickly and Enjoy! </p>
+              <a class="btn btn-primary btn-lg"  role="button" href="/users/sign-in" class="card-link" >Sign-In</a>
+            </div>
+          </div>
+        </div>
+        <div class=" col-sm-4 position-absolute bottom-50 end-50">
+          <div class="card bg-info border-success ">
+            <div class="card-body">
+              <h5 class="card-title">NEW USER!</h5>
+              <p class="card-text">If you are new here then Sign-Up quickly and Enjoy!</p>
+              <a class="btn btn-primary btn-lg"  role="button" href="/users/sign-up" class="card-link" >Sign-Up</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    
+
+
+
+
+    <%}%>
+
+  <!-- importing this script for creating the comments -->
+<!-- <script src="/js/home_post_comments.js" ></script> -->
+<script src="/js/home_posts.js"></script>
+
+<script src="js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
+
+<script src="/js/friendship.js"></script>

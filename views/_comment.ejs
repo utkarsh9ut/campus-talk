@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/css/_comment.css">
+
+<section class="comment-list">
+<li>   
+    <p>
+       
+        <img class="user-img" src="<%= post.user.avatar %>" width="50">
+        <small>
+           <%=comment.user.name%>
+
+            
+        </small>
+        <span class="del-button">
+        <% if (locals.user && locals.user.id == comment.user.id){ %>
+            <small>
+                <a href="/comments/destroy/<%= comment.id %>"><i class="bi bi-trash-fill"></i></a>
+            </small>
+            <% } %>
+        </span>
+        <div class="comment-content">
+        <%= comment.content %>
+        </div>
+        <small class="like">
+            <% if (locals.user){ %>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                        <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>
+                </a>
+            <% }else{ %>
+                <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>
+            <% } %>
+        </small>
+        <br>
+       
+    </p>   
+</li> 
+</section>

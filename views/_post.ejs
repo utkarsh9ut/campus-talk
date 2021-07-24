@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/_post.css">
+<li id="post-<%= post._id %>">
+    <section class="each-post">
+    <p>
+        <div>
+           <span>
+            
+            <img class="user-img" src="<%= post.user.avatar %>" width="50">
+        </span>
+            <span  class="user-info">
+            <div class="user-name">
+                <a class="name" style="color: blue; font-family: sans-serif;" href="/users/profile/<%= post.user.id %>" ><%= post.user.name %></a>
+        </div>
+            <div class="time">
+                <%=post.createdAt.toString().slice(0,25)%>
+            </div>
+        </span>
+            <% if (locals.user && locals.user.id == post.user.id){ %>
+                <small class="delete-post">
+                    <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>"><i class="bi bi-trash-fill"></i></a>
+                </small>
+                <% } %>
+                
+            
+        </div>
+        
+       
+        
+       
+       
+        <div>
+            <div class="post-content"> 
+            <%= post.content %>
+            </div>
+    <div class="img-post">
+        <%if(post.avatar){%>
+        <img src="<%= post.avatar %>" alt="<%=post.user.name%>" width="320" height="400">
+        <%}%>
+        </div>
+        <small class="like">
+            <% if (locals.user){ %>
+                <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <%= post.likes.length %><i class="bi bi-hand-thumbs-up"></i>
+                </a>
+            <% }else{ %>
+                <%= post.likes.length %> <i class="bi bi-hand-thumbs-up"></i>Likes
+            <% } %>
+        </small>
+    </div>
+
+    </p>
+    <div class="post-comments">
+        <% if (locals.user){ %>
+            <form action="/comments/create" method="POST">
+                <input type="text" name="content" placeholder="Add comment..." required style="border: blue solid 1px;">
+                <input type="hidden" name="post" value="<%= post._id %>" >
+                <input type="submit" value="Add Comment" style="color: rgb(31, 94, 231); background-color: white; font-size: 15px; font-family:cursive; border: blue solid 1px; ">
+            </form>
+
+        <% } %>
+
+        <div class="post-comments-list">
+            <ul class="comments" id="post-comments-<%= post._id %>">
+                <% for (comment of post.comments){%>
+
+                    <%- include('_comment') -%>
+                    
+                
+                <%} %>
+            </ul>
+        </div>
+    </div>
+</section>
+</li>
