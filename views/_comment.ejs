@@ -22,11 +22,11 @@
         </div>
         <small class="like">
             <% if (locals.user){ %>
-                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
-                        <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>
+                <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment" >
+                        <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>Likes
                 </a>
             <% }else{ %>
-                <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>
+                <%= comment.likes.length %> <i class="bi bi-hand-thumbs-up"></i>Likes
             <% } %>
         </small>
         <br>

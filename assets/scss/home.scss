@@ -1,8 +1,9 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// body{
+body{
 //   background-image: url("../images/home1.jpg");
-// }
+background-color: rgb(254, 254, 255);
+ }
 
 .wrapper{margin:10vh}
 //post card styles
@@ -15,7 +16,7 @@
  min-height:450px;
    box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
 
- @media (max-width: 768px) {
+ @media (max-width: 888px) {
   min-height:350px;
 }
 
@@ -117,6 +118,7 @@ span.recieve{
     width: 40%;
     //justify-content: center;
     margin-left: 200px;
+    //background-color: aliceblue;
     
   }
   span.total-user{

@@ -5,11 +5,14 @@
         <div>
            <span>
             
-            <img class="user-img" src="<%= post.user.avatar %>" width="50">
+            <img class="user-img" src="<%= post.user.avatar %>" width="90" height="60">
         </span>
             <span  class="user-info">
             <div class="user-name">
                 <a class="name" style="color: blue; font-family: sans-serif;" href="/users/profile/<%= post.user.id %>" ><%= post.user.name %></a>
+        </div>
+        <div style="font-weight: 600;">
+            <%=post.user.ProfileInfo%>
         </div>
             <div class="time">
                 <%=post.createdAt.toString().slice(0,25)%>
@@ -34,13 +37,14 @@
             </div>
     <div class="img-post">
         <%if(post.avatar){%>
-        <img src="<%= post.avatar %>" alt="<%=post.user.name%>" width="320" height="400">
+        <img src="<%= post.avatar %>" alt="<%=post.user.name%>" width="400" height="400">
         <%}%>
         </div>
-        <small class="like">
+        <br>
+        <small class="like" style="margin-top: 5px; background-color: rgb(235, 241, 243); border-radius: 10px;">
             <% if (locals.user){ %>
                 <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                        <%= post.likes.length %><i class="bi bi-hand-thumbs-up"></i>
+                        <%= post.likes.length %><i class="bi bi-hand-thumbs-up"></i>Likes
                 </a>
             <% }else{ %>
                 <%= post.likes.length %> <i class="bi bi-hand-thumbs-up"></i>Likes

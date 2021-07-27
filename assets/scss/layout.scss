@@ -1,7 +1,12 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 html{
+    min-height: 100vh;
     height: 200%;
 }
 .has{
     vertical-align: bottom;
+}
+body{
+    height: 200px;
+   
 }

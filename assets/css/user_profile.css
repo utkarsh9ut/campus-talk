@@ -1,6 +1,6 @@
 .user-profile {
   height: auto;
-  width: 40%;
+  width: 50%;
   margin-top: 30px;
   margin: 0 auto;
   background-color: #4723d9;
@@ -76,7 +76,7 @@ textarea, input {
   color: #130031;
   height: 30px;
   height: 30px;
-  width: 50%;
+  width: 60%;
   margin-top: 4px;
   margin-left: 10px;
   resize: vertical;

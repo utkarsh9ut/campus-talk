@@ -7501,7 +7501,11 @@ textarea.form-control-lg {
     display: none !important; } }
 
 html {
+  min-height: 100vh;
   height: 200%; }
 
 .has {
   vertical-align: bottom; }
+
+body {
+  height: 200px; }

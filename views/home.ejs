@@ -3,17 +3,18 @@
 <% if(locals.user){ %>
 <div id="home-container">
     <span class="post"> 
-    <section id="feed-posts">
-            <h4>Posts</h4>
+        
+    <section id="feed-posts" style="background-color:skyblue; border-radius: 10px;">
+            <h4 style="font-weight: 700; font-family: sans-serif; color: blue;">ASK YOUR DOUBT</h4>
            
             <form action="/posts/create" id="new-post-form" method="POST" enctype="multipart/form-data" >
-                <textarea name="content" cols="30" rows="3" placeholder="Write your post here..." required></textarea>
+                <textarea name="content" cols="30" rows="3" placeholder="Write here..." required></textarea>
                
-                <input class="post-submit" type="file" name="avatar" placeholder="Post file" style="color: rgb(0, 68, 255); background-color: white; font-size: 15px; font-family:cursive; border: blue solid 3px; ">
+                <input class="post-submit" type="file" name="avatar" placeholder="Post file" style="color: rgb(0, 68, 255); background-color: white; font-size: 15px; font-family:cursive; border: blue solid 2px;border-radius: 5px; margin-left: 5px; margin-bottom: 2px;">
             &nbsp;  &nbsp;  &nbsp;
-                <input class="post-submit" type="submit" value="Post" style="color: rgb(31, 94, 231); background-color: white; font-size: 20px; font-family:cursive; border: blue solid 3px; ">
+                <input class="post-submit" type="submit" value="Post" style="color: rgb(31, 94, 231); background-color: white; font-size: 20px; font-family:cursive; border: blue solid 2px; border-radius: 10px;">
             </form>
-            
+        </section>
         
             <div id="posts-list-container">
                 <ul>
@@ -24,14 +25,14 @@
                     <%} %>
                 </ul>
             </div>
-        </section>
+        
     </span>
 
 
         
          <!-- <section id="users-container"> -->
         <!-- If user is signed in then show his/her friends -->
-       <span class="Friends">
+       <span class="Friends" style="width: 300px;">
         <div id="users-friends">
             <% if(locals.user){ %>
             <h4 style="text-align: center; border-bottom: solid white 3px;">Friends</h4>
@@ -53,10 +54,12 @@
                     <% }else{ %>
                         <!-- then friend details are in from_user object -->
                         <p id="friend-<%= friend.from_user.id %>" class="friends-of-user">
-                            <a href="/users/profile/<%= friend.from_user.id %>"><%= friend.from_user.name %></a>
+                            <img src="<%=friend.from_user.avatar %>" alt="<%=friend.to_user.name %>" style="border-radius: 40px;" width="35" > 
+                            <a style="font-size: 18px;" href="/users/profile/<%= friend.from_user.id %>"><%= friend.from_user.name %></a>
+
                             <a class="remove-friend-button" href="/friendship/toggle/<%= friend.from_user.id %>">
-                                <button type="button">
-                                    Delete friend
+                                <button type="button"  style="width: 100px; font-size: 20px; border-radius: 10px;">
+                                    Unfollow
                                 </button>
                             </a>
                         </p>
@@ -75,12 +78,13 @@
                     <p>
                         <img src="<%=u.avatar %>" alt="<%= u.name %>" width="30">
                         <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                        
                     </p>
                 <% } %>
             </div>
         
        </span>
-<span class="sent">
+<span class="sent" style="width: 300px; margin-right: -100px;">
         <div id="users-sent-requests">
             <h4 class="divide">Sent Requests</h4>
            
@@ -88,18 +92,18 @@
                 <% if(!friend.accepted && locals.user.id == friend.from_user.id){ %>
                     <!-- then friend details are in to_user object -->
                     <p id="friend-<%= friend.to_user.id %>" class="friends-of-user">
-                        <img src="<%=friend.to_user.avatar %>" alt="<%=friend.to_user.name %>" width="30">
-                        <a href="/users/profile/<%= friend.to_user.id %>"><%= friend.to_user.name %></a>
+                        <img src="<%=friend.to_user.avatar %>" alt="<%=friend.to_user.name %>"style="border-radius: 40px;" width="30">
+                        <a href="/users/profile/<%= friend.to_user.id %>" style="font-size: 18px;"><%= friend.to_user.name %></a>
                         <a class="remove-friend-button" href="/friendship/toggle/<%= friend.to_user.id %>">
-                            <button type="button" class="sent-rec">
-                                Cancel Request
+                            <button type="button" class="sent-rec" style="width: 100px; font-size: 20px; border-radius: 10px;">
+                                Cancel 
                             </button>
                         </a>
                     </p>
                 <% } %>
             <% } %>
         </div>
-        
+       
     <!-- </span>
      <span class="recieve"> -->
         <div id="users-received-requests">
@@ -109,10 +113,11 @@
                 <% if(!friend.accepted && locals.user.id == friend.to_user.id){ %>
                     <!-- then friend details are in from_user object -->
                     <p id="friend-<%= friend.from_user.id %>" class="friends-of-user">
-                        <a href="/users/profile/<%= friend.from_user.id %>"><%= friend.from_user.name %></a>
+                        <img src="<%=friend.from_user.avatar %>" alt="<%=friend.to_user.name %>" style="border-radius: 40px;" width="35" > 
+                        <a href="/users/profile/<%= friend.from_user.id %>" style="font-size: 18px;"><%= friend.from_user.name %></a>
                         <a class="remove-friend-button" href="/friendship/toggle/<%= friend.from_user.id %>">
-                           <button type="button">
-                                Delete Request
+                           <button type="button" style="width: 100px; font-size: 20px; border-radius: 10px;">
+                                Delete
                             </button>
                         </a>
                     </p>

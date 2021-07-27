@@ -7500,6 +7500,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important; } }
 
+body {
+  background-color: #fefeff; }
+
 .wrapper {
   margin: 10vh; }
 
@@ -7510,7 +7513,7 @@ textarea.form-control-lg {
   border-radius: 20px;
   min-height: 450px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2); }
-  @media (max-width: 768px) {
+  @media (max-width: 888px) {
     .card {
       min-height: 350px; } }
   @media (max-width: 420px) {

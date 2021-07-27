@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema({
     ProfileInfo:{
         type: String
     },
+
+    branch:{
+           type:String
+    },
+    year:{
+        type:String,
+
+    },
     avatar: {
         type: String
     },

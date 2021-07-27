@@ -17,8 +17,39 @@
         <label class="in">PROFILE IMAGE</label><br> 
         <input type="file" name="avatar" placeholder="Profile Picture">
         <br> 
+        <label class="in">Branch</label><br> 
+        <input list="branch" name="branch" value="<%=profile_user.branch%>" placeholder="Select..">
+  <datalist id="branch">
+    <option value="Civil Enginnering">
+    <option value="Electronics and Communications">
+    <option value="Computer Science">
+    <option value="Electrical Engineering">
+        <option value="Mechanical Engineering"></option>
+
+    
+  </datalist>
+        <br> 
+        <label class="in">Graduation Year</label><br> 
+        <input list="year" name="year" value="<%=profile_user.year%>" placeholder="Select..">
+  <datalist id="year">
+    <option value="1st">
+    <option value="2nd">
+    <option value="3rd">
+    <option value="4th">
+    
+  </datalist>
+        <!-- <select name="year" id="select_year" value="<%=profile_user.year%>">
+            <option value="">--Please choose an option--</option>
+            <option value="C++" >C++</option>
+            <option value="Python">Python</option>
+            <option value="C">C</option>
+            <option value="Java">Java</option>
+            <option value="C#">C#</option>
+            <option value="Ruby">Ruby</option>
+        </select>    -->
+        <br>
         <label class="in">PROFILE INFORMATION</label><br> 
-        <textarea class="in" name="ProfileInfo" placeholder="Your ProfileInfo" value="<%=profile_user.ProfileInfo %>" ></textarea>
+        <input class="in" name="ProfileInfo" placeholder="Your ProfileInfo" value="<%=profile_user.ProfileInfo %>" style="width:300px; height: 50px;">
         <br> 
         <br>
         <input type="submit" value="update" class="submit">
@@ -85,6 +116,14 @@
                           <td><%= profile_user.email %></td>
                         </tr>
                         <tr>
+                            <td>Graduation Year:</td>
+                            <td><%= profile_user.year %></td>
+                          </tr>
+                          <tr>
+                            <td>Branch:</td>
+                            <td><%= profile_user.branch %></td>
+                          </tr>
+                          <tr>
                             <td>PROFILE STATUS:</td>
                             <td><%= profile_user.ProfileInfo %></td>
                           </tr>

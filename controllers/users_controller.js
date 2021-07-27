@@ -50,6 +50,9 @@ module.exports.update = async function(req, res){
                 user.name = req.body.name;    // We would have not been able to use req.body without multer in case of file uploading form
                 user.email = req.body.email;
                 user.ProfileInfo=req.body.ProfileInfo;
+                user.year=req.body.year;
+                user.branch=req.body.branch;
+                console.log(req.body);
 
                 if(req.file){
 

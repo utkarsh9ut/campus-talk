@@ -18,17 +18,20 @@ class ToggleLike{
             })
             .done(function(data) {
                 let likesCount = parseInt($(self).attr('data-likes'));
+                let like=$(self).attr('data-likes');
                 console.log(likesCount);
                 if (data.data.deleted == true){
                     likesCount -= 1;
+                    like="Likes"
                     
                 }else{
                     likesCount += 1;
+                    like="Liked"
                 }
 
 
                 $(self).attr('data-likes', likesCount);
-                $(self).html(`${likesCount} <i class="bi bi-hand-thumbs-up"></i>`);
+                $(self).html(`${likesCount} <i class="bi bi-hand-thumbs-up"></i> ${like}`);
 
             })
             .fail(function(errData) {
