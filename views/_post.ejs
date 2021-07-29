@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/_post.css">
+
 <li id="post-<%= post._id %>">
     <section class="each-post">
     <p>
@@ -6,6 +7,7 @@
            <span>
             
             <img class="user-img" src="<%= post.user.avatar %>" width="90" height="60">
+            
         </span>
             <span  class="user-info">
             <div class="user-name">
@@ -32,12 +34,12 @@
        
        
         <div>
-            <div class="post-content"> 
+            <div class="post-content" style="font-size: 20px;"> 
             <%= post.content %>
             </div>
     <div class="img-post">
         <%if(post.avatar){%>
-        <img src="<%= post.avatar %>" alt="<%=post.user.name%>" width="400" height="400">
+        <img src="<%= post.avatar %>" alt="<%=post.user.name%>" width="400" height="300">
         <%}%>
         </div>
         <br>

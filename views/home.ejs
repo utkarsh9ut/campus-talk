@@ -20,7 +20,7 @@
                 <ul>
                     <% for(post of posts){ %>
                         
-                    <%- include('_post') -%>
+                     <%- include('_post') -%>
                         
                     <%} %>
                 </ul>
@@ -44,10 +44,11 @@
                     <% if(locals.user.id == friend.from_user.id){ %>
                         <!-- then friend details are in to_user object -->
                         <p id="friend-<%= friend.to_user.id %>" class="friends-of-user">
-                            <a href="/users/profile/<%= friend.to_user.id %>"><%= friend.to_user.name %></a>
+                            <img src="<%=friend.to_user.avatar %>" alt="<%=friend.to_user.name %>" style="border-radius: 40px;" width="35" >
+                            <a style="font-size: 18px;" href="/users/profile/<%= friend.to_user.id %>"><%= friend.to_user.name %></a>
                             <a class="remove-friend-button" href="/friendship/toggle/<%= friend.to_user.id %>">
-                                <button type="button">
-                                    Remove friend
+                                <button type="button" style="width: 100px; font-size: 20px; border-radius: 10px;">
+                                    Unfollow
                                 </button>
                             </a>
                         </p>
@@ -76,8 +77,8 @@
                 <h4 style="text-align: center; border-bottom: solid white 3px;">Users</h4>
                 <% for(u of all_users){%>
                     <p>
-                        <img src="<%=u.avatar %>" alt="<%= u.name %>" width="30">
-                        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                        <img src="<%=u.avatar %>" alt="<%= u.name %>" width="30" style="border-radius: 10px;">
+                        <a href="/users/profile/<%= u.id %>" style="color: azure;"><%= u.name %></a>
                         
                     </p>
                 <% } %>
